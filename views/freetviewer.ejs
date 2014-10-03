@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Freets</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <nav class="navbar-header navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/">Fritter</a>
+		<ul class="nav navbar-nav">
+			<% if (user.id) { %>
+				<li class="pull-left"><a href="/User"><%= user.id %></a></li>
+				<li class="pull-left"><a href="/Logout">Logout</a></li>
+			<% } else { %>
+				<li class="pull-left"><a href="/User">Login</a></li>
+			<% } %>
+		</ul>
+    </nav>
+	<div class="container">
+		<center>
+			<div class="container">
+				<textarea name="content" form="editform"><%= freet.message %></textarea><br />
+				<form class="pull-left" action="/Edit" method="post" id="editform">
+					<input type="hidden" name="id" value="<%= freet._id %>" />
+					<input type="submit" value="Save"></input>
+				</form>
+				<form class="pull-right" action="/Delete" method="post">
+					<input type="hidden" name="id" value="<%= freet._id %>" />
+					<input type="submit" value="Delete"></input>
+				</form>
+			</div>
+		</center>
+		<% if(!freet) { %>
+			<div> <%= user.id %> has no freets yet or does not exist. </div>
+		<% } %>
+	</div>
+    <script src="/javascripts/jquery-1.10.2.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+</body>
+</html>

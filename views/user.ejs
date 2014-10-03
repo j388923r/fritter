@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login</title>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.css">
+	<link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+    <nav class="navbar-header navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/">Fritter</a>
+		<ul class="nav navbar-nav">
+			<li class="pull-left"><a href="/User">Login</a></li>
+		</ul>
+    </nav>
+	<span style="color:red"><%= message %></span>
+    <form action="/Login" method="post" id="freetform">
+        User Name: <input name="username" type="text" required><br />
+		Password: <input name="password" type="password"></input><br />
+		<input type="submit" />
+    </form>
+    <script src="../javascripts/jquery-1.10.2.js"></script>
+    <script src="../javascripts/bootstrap.js"></script>
+</body>
+</html>

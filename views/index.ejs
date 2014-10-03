@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.css">
+	<link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+	<nav class="navbar-header navbar-inverse navbar-fixed-top">
+        <a class="navbar-brand" href="/">Fritter</a>
+		<ul class="nav navbar-nav">
+			<% if (user.id) { %>
+				<li class="pull-left"><a href="/User"><%= user.id %></a></li>
+				<li class="pull-left"><a href="/Logout">Logout</a></li>
+			<% } else { %>
+				<li class="pull-left"><a href="/User">Login</a></li>
+			<% } %>
+		</ul>
+    </nav>
+    <form action="http://localhost:3000/freet" method="post" id="freetform">
+		<center>
+			Post Freet: <textarea name="message" form="freetform"></textarea>
+			<input type="submit" value="Post"></input>
+		</center>
+    </form>
+	<div class="container">
+		<% for(var i=0; i<freets.length; ++i){ %>
+			<center>
+				<div class="container" style="color:blue;font-weight:bold;background-color:azure;border:2px black solid; margin:0px;">
+					<a style="float:left" href="User/<%= freets[i].username %>"><%= freets[i].username %></a><br />
+					<span style="font-weight:normal; color:black; float:left"><%= freets[i].message %></span><br />
+					<% if(user.id === freets[i].username) {%>
+						<a class="pull-left" href="/User/<%= freets[i].username %>/<%= freets[i]._id %>">Edit</a>
+					<% } %>
+				</div>
+			</center>
+		<% } %>
+		<% if(freets.length == 0) { %>
+			<div> <%= user.id %> has no freets yet or does not exist. </div>
+		<% } %>
+	</div>
+    <script src="javascripts/jquery-1.10.2.js"></script>
+    <script src="javascripts/bootstrap.js"></script>
+</body>
+</html>
