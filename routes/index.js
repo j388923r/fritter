@@ -133,7 +133,6 @@ router.post('/Freet', function (req, res) {
     var postedData = req.body;
     if (req.session.user)
     {
-        posts.push({ username: req.session.user, message: postedData.message });
         var freets = db.get('freets');
         freets.insert({ username: req.session.user, message: postedData.message }, function(error, inserted){
             console.log(inserted);
