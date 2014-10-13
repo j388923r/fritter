@@ -62,8 +62,8 @@ app.use(function(err, req, res, next) {
         message: err.message,
         error: {}
     });
-});
+//});
 
-var server = app.listen(80, function () {
-    console.log('Listening on port %d', server.address().port);
-});
+//var server = app.listen(80, function () {
+//    console.log('Listening on port %d', server.address().port);
+//});
